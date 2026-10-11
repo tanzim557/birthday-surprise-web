@@ -1,0 +1,590 @@
+/* ==========================================================================
+   Cyber-Magical Celebration Stylesheet
+   Theme: Deep Royal Midnight (#0a0a23), Starlight Gold (#ffd700), Magic Purple
+   ========================================================================== */
+
+:root {
+  --color-midnight: #1e1b4b;
+  --color-cosmic: #fff5f7;
+  --color-gold: #eab308;
+  --color-purple: #9333ea;
+  --color-pink: #ec4899;
+  --color-cyan: #0284c7;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', 'Hind Siliguri', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #fdf2f8;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(244, 114, 182, 0.5);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(236, 72, 153, 0.8);
+}
+
+/* Glassmorphism Card Style - Light Celebratory Frosted Acrylic */
+.glass-card {
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 12px 35px -6px rgba(236, 72, 153, 0.15), 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+/* Neon & Warm Glow Utilities */
+.neon-text-gold {
+  text-shadow: 0 0 10px rgba(245, 158, 11, 0.4), 0 0 20px rgba(251, 191, 36, 0.3);
+}
+
+.dashed-glow {
+  border-left: 2px dashed #eab308;
+  box-shadow: 0 0 15px rgba(234, 179, 8, 0.8);
+  animation: pulseGuideline 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes pulseGuideline {
+  0% { opacity: 0.6; }
+  100% { opacity: 1; filter: drop-shadow(0 0 8px #f59e0b); }
+}
+
+/* ==========================================================================
+   Step 1: Gift Box & Shimmer Effects
+   ========================================================================== */
+.gift-box-shimmer {
+  background: radial-gradient(circle at 30% 30%, #ffd700, #b45309 60%, #78350f 100%);
+  box-shadow: 0 10px 40px rgba(245, 158, 11, 0.4), inset 0 2px 6px rgba(255, 255, 255, 0.6);
+  position: relative;
+  overflow: hidden;
+}
+
+.gift-box-shimmer::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.5) 50%,
+    transparent 60%
+  );
+  transform: rotate(35deg);
+  animation: shimmerLight 3.5s infinite;
+}
+
+@keyframes shimmerLight {
+  0% { transform: translateX(-100%) rotate(35deg); }
+  100% { transform: translateX(100%) rotate(35deg); }
+}
+
+.gift-box-ribbon-v {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 30px;
+  transform: translateX(-50%);
+  background: linear-gradient(to right, #ec4899, #f43f5e, #be123c);
+  box-shadow: 0 0 12px rgba(244, 63, 94, 0.6);
+  z-index: 1;
+}
+
+.gift-box-ribbon-h {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 30px;
+  transform: translateY(-50%);
+  background: linear-gradient(to bottom, #ec4899, #f43f5e, #be123c);
+  box-shadow: 0 0 12px rgba(244, 63, 94, 0.6);
+  z-index: 1;
+}
+
+.gift-bow {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 30px;
+  border-radius: 50%;
+  border: 6px solid #fb7185;
+  box-shadow: 0 0 15px rgba(251, 113, 133, 0.8);
+  z-index: 3;
+}
+
+/* Audio Waveform Equalizer */
+.wave-bar {
+  animation: equalize 1s infinite alternate ease-in-out;
+}
+.wave-bar:nth-child(1) { animation-delay: 0.1s; }
+.wave-bar:nth-child(2) { animation-delay: 0.3s; }
+.wave-bar:nth-child(3) { animation-delay: 0.15s; }
+.wave-bar:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes equalize {
+  0% { height: 4px; }
+  100% { height: 16px; }
+}
+
+.paused .wave-bar {
+  animation-play-state: paused;
+  height: 4px !important;
+}
+
+/* ==========================================================================
+   Step 2: Cake & Candle Realistic Physics & Vector tiers
+   ========================================================================== */
+.candle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.candle:hover {
+  transform: scale(1.08);
+}
+
+.flame {
+  width: 16px;
+  height: 28px;
+  background: radial-gradient(ellipse at bottom, #fff 10%, #ffd700 45%, #ff4500 80%, transparent 100%);
+  border-radius: 50% 50% 25% 25% / 60% 60% 40% 40%;
+  box-shadow: 0 0 18px 4px rgba(255, 170, 0, 0.8), 0 0 35px 8px rgba(255, 77, 0, 0.4);
+  animation: flicker 0.15s infinite alternate ease-in-out;
+  transform-origin: center bottom;
+  margin-bottom: 2px;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.flame.extinguished {
+  opacity: 0;
+  transform: scale(0.2) translateY(-10px);
+  pointer-events: none;
+}
+
+.flame-inner {
+  width: 6px;
+  height: 12px;
+  background: #ffffff;
+  border-radius: 50%;
+  margin: 6px auto 0;
+  box-shadow: 0 0 8px #ffffff;
+}
+
+@keyframes flicker {
+  0% { transform: rotate(-2deg) scale(0.96); filter: drop-shadow(0 0 8px #ffd700); }
+  50% { transform: rotate(1deg) scale(1.04); }
+  100% { transform: rotate(2deg) scale(1.0); filter: drop-shadow(0 0 14px #ff5500); }
+}
+
+.wick {
+  width: 3px;
+  height: 8px;
+  background: #27272a;
+  border-radius: 1px;
+}
+
+.candle-body {
+  width: 22px;
+  height: 52px;
+  border-radius: 6px 6px 0 0;
+  box-shadow: inset -3px 0 5px rgba(0,0,0,0.3), inset 2px 0 3px rgba(255,255,255,0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.candle-stripe {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 6px,
+    rgba(255, 255, 255, 0.25) 6px,
+    rgba(255, 255, 255, 0.25) 12px
+  );
+}
+
+.frosting-drip-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background: radial-gradient(circle at 10px 10px, #fbcfe8 10px, transparent 11px) repeat-x;
+  background-size: 20px 20px;
+}
+
+.frosting-pearls {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: radial-gradient(circle at 6px 4px, #fef08a 4px, transparent 5px) repeat-x;
+  background-size: 12px 10px;
+}
+
+.cream-swirl {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background: radial-gradient(circle at 35% 35%, #fff, #fef08a);
+  border-radius: 50% 50% 30% 30%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+}
+
+.cake-assembly {
+  user-select: none;
+  touch-action: manipulation;
+}
+
+#cutGuideline {
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+#cutGuideline:hover {
+  filter: drop-shadow(0 0 16px #facc15);
+}
+
+/* ==========================================================================
+   Step 3: 3D Memory Polaroid Cards
+   ========================================================================== */
+.perspective-container {
+  perspective: 1200px;
+}
+
+.polaroid-card {
+  position: relative;
+  background: #ffffff;
+  padding: 12px 12px 20px 12px;
+  border-radius: 8px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 3px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  transform: rotate(var(--rotation, 0deg));
+}
+
+.polaroid-card:hover {
+  box-shadow: 0 25px 50px rgba(250, 204, 21, 0.25), 0 10px 25px rgba(0, 0, 0, 0.4);
+  z-index: 20;
+}
+
+/* Authentic Washi Tape Accent */
+.tape-sticker {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 80px;
+  height: 22px;
+  background: rgba(254, 240, 138, 0.7);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+  backdrop-filter: blur(2px);
+  z-index: 5;
+  clip-path: polygon(4% 0%, 96% 0%, 100% 100%, 0% 100%);
+  opacity: 0.9;
+}
+
+.polaroid-img-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #18181b;
+  aspect-ratio: 4 / 3;
+}
+
+.polaroid-img-wrapper.is-landscape {
+  aspect-ratio: 4 / 3;
+}
+
+.polaroid-img-wrapper.is-portrait {
+  aspect-ratio: 3 / 4;
+}
+
+.polaroid-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.polaroid-card:hover .polaroid-img-wrapper img {
+  transform: scale(1.06);
+}
+
+.polaroid-caption {
+  font-family: 'Hind Siliguri', 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: #1e1b4b;
+  margin-top: 10px;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+/* ==========================================================================
+   Step 4: Scratch-Off Cards
+   ========================================================================== */
+.scratch-card-container {
+  position: relative;
+  width: 100%;
+  height: 440px;
+  min-height: 440px;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 12px 35px rgba(244, 114, 182, 0.25), 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.9);
+}
+
+.scratch-hidden-content {
+  position: absolute;
+  inset: 0;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(145deg, #ffffff 0%, #fff1f2 50%, #fdf2f8 100%);
+  color: #1e1b4b;
+}
+
+.scratch-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: crosshair;
+  touch-action: none;
+  z-index: 5;
+  transition: opacity 0.5s ease;
+}
+
+/* ==========================================================================
+   Step 5: Balloon Arena & Pop Mini-Game
+   ========================================================================== */
+.floating-balloon {
+  position: absolute;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+  user-select: none;
+}
+
+.floating-balloon:active {
+  transform: scale(0.9);
+}
+
+.balloon-shape {
+  width: 54px;
+  height: 68px;
+  border-radius: 50% 50% 50% 50% / 45% 45% 55% 55%;
+  position: relative;
+  box-shadow: inset -6px -6px 12px rgba(0,0,0,0.15), inset 6px 6px 12px rgba(255,255,255,0.6);
+}
+
+.balloon-shape::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 5px;
+  background: inherit;
+  border-radius: 2px;
+}
+
+.balloon-string {
+  position: absolute;
+  top: 68px;
+  left: 50%;
+  width: 1px;
+  height: 35px;
+  background: rgba(148, 163, 184, 0.6);
+}
+
+/* Emoji Particle on Pop */
+.emoji-burst {
+  position: absolute;
+  pointer-events: none;
+  font-size: 1.5rem;
+  animation: burstAnim 0.7s forwards cubic-bezier(0.1, 0.8, 0.3, 1);
+  z-index: 50;
+}
+
+@keyframes burstAnim {
+  0% { transform: translate(0, 0) scale(0.5); opacity: 1; }
+  100% { transform: translate(var(--tx), var(--ty)) scale(1.4); opacity: 0; }
+}
+
+/* ==========================================================================
+   Virtual Golden Ticket Voucher Modal
+   ========================================================================== */
+.golden-ticket-card {
+  background: radial-gradient(ellipse at 50% -20%, #fef08a 0%, #fde047 30%, #eab308 70%, #ca8a04 100%);
+  box-shadow: 0 10px 40px rgba(234, 179, 8, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.8);
+  position: relative;
+}
+
+.holographic-sheen {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 30%,
+    rgba(147, 51, 234, 0.3) 50%,
+    rgba(6, 182, 212, 0.3) 70%,
+    transparent 100%
+  );
+  opacity: 0.6;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  animation: holoPan 5s infinite linear;
+}
+
+@keyframes holoPan {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.ticket-notch {
+  position: absolute;
+  top: 50%;
+  width: 24px;
+  height: 24px;
+  background: #fff5f7;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+.notch-left { left: -12px; }
+.notch-right { right: -12px; }
+
+/* Modal Entrance Animation */
+@keyframes modalIn {
+  0% { transform: scale(0.9) translateY(20px); opacity: 0; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.animate-modal-in {
+  animation: modalIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Responsive Mobile & Safe Area Rules */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 640px) {
+  body {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  .step-section {
+    padding-top: 4.75rem;
+    padding-bottom: max(6.5rem, env(safe-area-inset-bottom, 20px) + 5rem);
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    min-height: calc(100vh - 3.5rem);
+  }
+
+  .polaroid-card {
+    max-width: 310px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .scratch-card-container {
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 420px;
+    min-height: 420px;
+  }
+
+  .golden-ticket-card {
+    border-radius: 1.25rem;
+  }
+}
+
+/* Floating Magic Heart Animation for Birthday Girl */
+.floating-magic-heart {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  font-size: 2rem;
+  user-select: none;
+  animation: floatUpAndFade 1.3s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
+}
+
+@keyframes floatUpAndFade {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.5) rotate(0deg);
+  }
+  50% {
+    opacity: 0.95;
+    transform: translate(calc(-50% + var(--tx)), calc(-50% - 60px)) scale(1.35) rotate(var(--rot));
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--tx)), calc(-50% - 140px)) scale(0.8) rotate(var(--rot));
+  }
+}
+
+/* Welcome Birthday Wish Popup Modal Animations */
+@keyframes popupIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.88) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-popup-in {
+  animation: popupIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 8s linear infinite;
+}

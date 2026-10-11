@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Happy Birthday Heya! ✨ A Magical Surprise For You</title>
+  <meta name="description" content="An unforgettable, gamified cyber-magical birthday surprise experience with interactive cake cutting, memory lane, scratch cards, and virtual gifts!" />
+
+  <!-- Google Fonts: Plus Jakarta Sans (Modern & Clean), Playfair Display (Luxury & Elegant), Dancing Script (Festive Handwriting), Hind Siliguri (Bengali) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Hind+Siliguri:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            midnight: '#1e1b4b',
+            cosmic: '#fff5f7',
+            magicPurple: '#9333ea',
+            neonGold: '#eab308',
+            starlightGold: '#f59e0b',
+            neonPink: '#ec4899',
+            cyberCyan: '#0284c7',
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            outfit: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            bengali: ['"Hind Siliguri"', '"Plus Jakarta Sans"', 'sans-serif'],
+            handwriting: ['"Dancing Script"', 'cursive'],
+            display: ['"Playfair Display"', '"Plus Jakarta Sans"', 'serif'],
+            mono: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          boxShadow: {
+            'glow-gold': '0 0 25px rgba(245, 158, 11, 0.35)',
+            'glow-purple': '0 0 25px rgba(219, 39, 119, 0.35)',
+            'glow-cyan': '0 0 25px rgba(2, 132, 199, 0.35)',
+            'glass': '0 12px 35px -6px rgba(236, 72, 153, 0.15), 0 4px 16px rgba(0, 0, 0, 0.04)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- GSAP & Plugins CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Draggable.min.js"></script>
+
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+  <!-- HTML2Canvas for Perfect Ticket Downloads -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css?v=heya_v22" />
+</head>
+<body class="bg-gradient-to-br from-rose-100/80 via-pink-50/70 to-amber-100/70 text-slate-800 font-outfit overflow-x-hidden min-h-screen relative selection:bg-pink-300 selection:text-pink-950">
+
+  <!-- ================================================================ -->
+  <!-- SPECIAL BIRTHDAY ENTRANCE POPUP MODAL (WISH & SONG UNLOCK) -->
+  <!-- ================================================================ -->
+  <div id="welcomeWishModal" class="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-5 bg-slate-950/75 backdrop-blur-md transition-all duration-500">
+    <div id="welcomeWishCard" class="relative w-full max-w-lg bg-gradient-to-b from-white via-pink-50/95 to-rose-100/90 border-2 border-pink-300/80 rounded-3xl p-6 sm:p-8 shadow-2xl shadow-pink-500/30 text-center overflow-hidden transform transition-all animate-popup-in max-h-[92vh] overflow-y-auto">
+      
+      <!-- Festive ambient background glows -->
+      <div class="absolute -top-20 -left-20 w-44 h-44 bg-pink-400/30 rounded-full blur-3xl pointer-events-none animate-pulse"></div>
+      <div class="absolute -bottom-20 -right-20 w-44 h-44 bg-amber-400/30 rounded-full blur-3xl pointer-events-none animate-pulse"></div>
+      
+      <!-- Floating Cute Sparkles / Hearts -->
+      <div class="absolute top-4 left-6 text-pink-300 text-lg sm:text-xl animate-bounce pointer-events-none select-none">✨</div>
+      <div class="absolute top-8 right-6 text-amber-300 text-lg sm:text-xl animate-pulse pointer-events-none select-none">💖</div>
+      <div class="absolute bottom-6 left-8 text-rose-300 text-base sm:text-lg animate-pulse pointer-events-none select-none">🎈</div>
+
+      <!-- Animated Cake & Music Badge -->
+      <div class="relative mx-auto mb-4 w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center">
+        <div class="absolute inset-0 bg-gradient-to-tr from-pink-500 via-rose-500 to-amber-400 rounded-full animate-spin-slow opacity-85 blur-[2px]"></div>
+        <div class="relative w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-full flex items-center justify-center shadow-lg border-2 border-pink-100">
+          <span class="text-3xl sm:text-4xl animate-bounce">🎂</span>
+        </div>
+        <div class="absolute -bottom-1 -right-1 w-8 h-8 bg-gradient-to-tr from-pink-600 to-rose-500 text-white rounded-full flex items-center justify-center text-xs shadow-md animate-pulse">
+          <i class="fa-solid fa-music"></i>
+        </div>
+      </div>
+
+      <!-- Pill Badge -->
+      <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-rose-100/90 border border-rose-200 text-rose-700 text-xs font-bold tracking-wide uppercase font-sans mb-3 shadow-sm">
+        <i class="fa-solid fa-wand-magic-sparkles text-amber-500"></i> A Very Special Birthday Wish
+      </div>
+
+      <!-- Main Headline -->
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 font-display tracking-tight mb-3">
+        Happy Birthday, <span id="welcomeFriendName" class="text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-rose-600 to-amber-500 italic">Heya</span>! 🌸🎉
+      </h2>
+
+      <!-- Emotional Birthday Wish Box -->
+      <div class="bg-white/85 backdrop-blur-sm border border-pink-200/80 rounded-2xl p-4 sm:p-5 mb-5 shadow-sm text-slate-700 text-sm sm:text-base leading-relaxed font-bengali text-center space-y-2">
+        <p class="font-bold text-slate-800 text-sm sm:text-base">
+          আজকের এই শুভ জন্মদিনে তোমার জন্য রইল হৃদয়ের অন্তস্থল থেকে একরাশ ভালোবাসা ও অনেক অনেক শুভকামনা! 💖
+        </p>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+          তোমার জীবনের প্রতিটি দিন ভরে উঠুক সুন্দর সুর, অফুরন্ত আনন্দ আর হাসিখুশিতে। তোমার জন্মদিনকে রঙিন ও স্পেশাল করতে ব্যাকগ্রাউন্ডে রোমান্টিক গান সাজানো হয়েছে! 🎶
+        </p>
+      </div>
+
+      <!-- Song Callout Badge -->
+      <div class="flex items-center justify-center gap-2 text-xs sm:text-sm font-bold text-pink-800 mb-5 bg-pink-100/80 py-2 px-4 rounded-xl mx-auto w-fit border border-pink-200 shadow-sm">
+        <i class="fa-solid fa-compact-disc text-pink-600 text-base animate-spin-slow"></i>
+        <span>স্পেশাল গান: <span class="text-rose-700 font-extrabold">Mala Re ( মালা রে )</span> 🎵</span>
+      </div>
+
+      <!-- Interactive Click To Play & Enter Button -->
+      <button id="welcomePlayBtn" class="w-full py-4 px-5 sm:px-6 bg-gradient-to-r from-pink-500 via-rose-500 to-amber-400 hover:from-pink-600 hover:to-amber-500 text-white font-extrabold text-sm sm:text-base md:text-lg rounded-2xl shadow-xl shadow-pink-400/40 hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2.5 sm:gap-3 cursor-pointer group">
+        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/25 flex items-center justify-center group-hover:scale-110 transition-transform shadow-inner shrink-0">
+          <i class="fa-solid fa-play text-white text-xs sm:text-sm ml-0.5"></i>
+        </div>
+        <span class="tracking-wide">এখানে ক্লিক করে গানটি শুনুন ও শুরু করুন ✨</span>
+      </button>
+
+      <p class="text-[11px] sm:text-xs text-slate-500 mt-3.5 flex items-center justify-center gap-1.5 font-medium">
+        <i class="fa-solid fa-headphones text-pink-500"></i> হেডফোন পরে নিলে গান ও অনুভূতি আরও দারুণ লাগবে!
+      </p>
+    </div>
+  </div>
+
+  <!-- Ambient Festive Birthday Balloon & Confetti Canvas -->
+  <canvas id="ambientCanvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+  <!-- Cinema Anamorphic Bars for Intro -->
+  <div id="cinemaTopBar" class="fixed top-0 left-0 right-0 h-16 md:h-24 bg-pink-950 z-50 transition-transform duration-1000 ease-out -translate-y-full"></div>
+  <div id="cinemaBottomBar" class="fixed bottom-0 left-0 right-0 h-16 md:h-24 bg-pink-950 z-50 transition-transform duration-1000 ease-out translate-y-full"></div>
+
+  <!-- Floating Glassmorphic Music Player & Experience Bar -->
+  <header class="fixed top-3 left-2.5 right-2.5 sm:top-4 sm:left-4 sm:right-4 md:left-8 md:right-8 z-40 flex items-center justify-between pointer-events-none gap-2">
+    <!-- Journey Stage Indicator -->
+    <div class="pointer-events-auto glass-card px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-pink-200/70 flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs md:text-sm font-semibold tracking-wide shadow-md text-slate-700 max-w-[62%] sm:max-w-none">
+      <span class="inline-block w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-emerald-500 animate-pulse shrink-0"></span>
+      <span id="journeyBadge" class="text-slate-800 font-bold font-sans truncate">✨ পার্ট ১: স্পেশাল সারপ্রাইজ 🎁</span>
+    </div>
+
+    <!-- Music Player Controls -->
+    <div class="pointer-events-auto glass-card px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full border border-pink-200/70 flex items-center gap-2 sm:gap-3 shadow-md shrink-0">
+      <div class="flex items-center gap-1 sm:gap-1.5 h-4 paused" id="audioWaves">
+        <span class="wave-bar w-0.5 h-2 bg-pink-500 rounded-full"></span>
+        <span class="wave-bar w-0.5 h-3 bg-rose-500 rounded-full"></span>
+        <span class="wave-bar w-0.5 h-1.5 bg-amber-500 rounded-full"></span>
+        <span class="wave-bar w-0.5 h-4 bg-purple-500 rounded-full"></span>
+      </div>
+      <button id="musicToggleBtn" class="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs md:text-sm font-bold text-pink-600 hover:text-pink-700 transition-colors focus:outline-none font-sans" title="Toggle Sound">
+        <i id="musicIcon" class="fa-solid fa-volume-high text-xs sm:text-sm"></i>
+        <span id="musicLabel" class="hidden sm:inline">Sound ON</span>
+      </button>
+      <button id="soundFxToggleBtn" class="text-xs text-purple-600 hover:text-purple-800 border-l border-pink-200 pl-1.5 sm:pl-2 focus:outline-none" title="Audio Synthesizer FX">
+        <i class="fa-solid fa-wand-magic-sparkles text-xs text-purple-600"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Navigation Timeline Pill (Bottom Center) -->
+  <nav id="timelineNav" class="fixed bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 z-40 hidden pointer-events-auto">
+    <div class="glass-card px-3 sm:px-4 py-2 sm:py-2.5 rounded-full border border-pink-200 shadow-lg flex items-center gap-2 sm:gap-3 text-xs font-sans font-semibold">
+      <button onclick="goToStep(1)" class="step-nav-btn text-slate-400 hover:text-pink-600 transition-colors" data-step="1" title="Gate">🔒</button>
+      <div class="w-1.5 sm:w-2 h-0.5 bg-pink-200"></div>
+      <button onclick="goToStep(2)" class="step-nav-btn text-slate-400 hover:text-pink-600 transition-colors" data-step="2" title="Cake">🎂</button>
+      <div class="w-1.5 sm:w-2 h-0.5 bg-pink-200"></div>
+      <button onclick="goToStep(3)" class="step-nav-btn text-slate-400 hover:text-pink-600 transition-colors" data-step="3" title="Memories">📸</button>
+      <div class="w-1.5 sm:w-2 h-0.5 bg-pink-200"></div>
+      <button onclick="goToStep(4)" class="step-nav-btn text-slate-400 hover:text-pink-600 transition-colors" data-step="4" title="Scratch Wishes">✨</button>
+      <div class="w-1.5 sm:w-2 h-0.5 bg-pink-200"></div>
+      <button onclick="goToStep(5)" class="step-nav-btn text-slate-400 hover:text-pink-600 transition-colors" data-step="5" title="Gifts & Balloons">🎁</button>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTAINER WITH INTERACTIVE SECTIONS -->
+  <main class="relative z-10 w-full min-h-screen flex flex-col items-center justify-center p-2 sm:p-4 md:p-8">
+
+    <!-- ================================================================ -->
+    <!-- STEP 1: THE MYSTERIOUS INTRO GATE -->
+    <!-- ================================================================ -->
+    <section id="step1" class="step-section active flex flex-col items-center justify-center text-center max-w-xl mx-auto py-8 sm:py-12 w-full px-2">
+      <!-- Floating Holographic Seal -->
+      <div class="relative group cursor-pointer mb-6 sm:mb-8" id="giftBoxTrigger">
+        <div class="absolute -inset-6 bg-gradient-to-r from-pink-400/30 via-purple-400/30 to-amber-300/30 rounded-full blur-2xl opacity-75 group-hover:opacity-100 transition duration-1000 animate-pulse"></div>
+        
+        <!-- Glowing 3D Golden Gift Box / Safe -->
+        <div class="relative w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52 mx-auto flex items-center justify-center rounded-3xl gift-box-shimmer border-2 border-amber-300/70 shadow-lg shadow-pink-300/40 transition-all duration-500 transform group-hover:scale-105">
+          <div class="gift-box-ribbon-v"></div>
+          <div class="gift-box-ribbon-h"></div>
+          <div class="gift-bow"></div>
+          <div class="z-10 flex flex-col items-center">
+            <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white/95 border-2 border-amber-300 flex items-center justify-center text-amber-500 text-xl sm:text-2xl shadow-md mb-2 transform group-hover:rotate-12 transition-transform">
+              <i id="gateLockIcon" class="fa-solid fa-lock text-amber-500 animate-bounce"></i>
+            </div>
+            <span class="text-[10px] sm:text-[11px] tracking-wider uppercase font-sans text-amber-950 font-extrabold bg-amber-200/90 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full shadow-sm">✨ TAP TO OPEN ✨</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mysterious Text Header -->
+      <div class="space-y-3 mb-6 sm:mb-8 px-2">
+        <div class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-rose-100/90 border border-rose-200 text-rose-700 text-[11px] sm:text-xs tracking-wider uppercase font-sans font-bold shadow-sm">
+          <i class="fa-solid fa-sparkles text-amber-500"></i> Heya's Birthday Special Celebration ✨
+        </div>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 font-display break-words">
+          A Magical Surprise For <span id="introFriendName" class="text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-rose-600 to-amber-500 font-display italic underline decoration-pink-300 decoration-wavy underline-offset-4 sm:underline-offset-8">Heya</span> 💖
+        </h1>
+        <p class="text-slate-700 text-sm sm:text-base md:text-lg max-w-md mx-auto leading-relaxed font-medium">
+          আজকের দিনটা শুধুই তোমার জন্য! গিফট বক্সে বা নিচের বাটনে ট্যাপ করে শুরু করো তোমার বিশেষ বার্থডে সারপ্রাইজ ✨
+        </p>
+      </div>
+
+      <!-- Single Direct Celebration Unlock Button -->
+      <div class="w-full max-w-xs sm:max-w-sm flex justify-center px-2">
+        <button id="readyBtn" class="w-full py-3.5 sm:py-4 px-6 sm:px-8 bg-gradient-to-r from-pink-500 via-rose-500 to-amber-400 hover:from-pink-600 hover:to-amber-500 text-white font-extrabold rounded-2xl shadow-lg shadow-pink-300/50 hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2.5 sm:gap-3 text-base md:text-lg cursor-pointer font-sans">
+          <i class="fa-solid fa-gift text-lg sm:text-xl text-white"></i>
+          <span>Open Birthday Surprise! ✨</span>
+        </button>
+      </div>
+
+      <p class="text-xs text-slate-500 mt-5 sm:mt-6 flex items-center gap-1.5 font-medium">
+        <i class="fa-solid fa-headphones text-pink-500"></i> Put on your headphones for the best experience!
+      </p>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- STEP 2: NEXT-GEN CAKE CUTTING & CANDLE BLOWING -->
+    <!-- ================================================================ -->
+    <section id="step2" class="step-section hidden flex flex-col items-center justify-center text-center max-w-4xl mx-auto py-8">
+      <!-- Neon Glowing Banner -->
+      <div class="mb-6 space-y-2">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-100 border border-amber-200 text-amber-900 text-xs font-sans font-bold tracking-wide uppercase shadow-sm">
+          🎂 পার্ট ২: মিষ্টি কেক কাটিং 🍰
+        </div>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight font-display">
+          Happy Birthday, <span id="cakeFriendName" class="text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-rose-600 to-amber-500 italic">Heya</span>! 🎂
+        </h2>
+        <p id="cakeInstructions" class="text-slate-700 text-base max-w-lg mx-auto font-medium">
+          একটি উইশ করো! মাইকে ফুঁ দাও অথবা মোমবাতির শিখায় ট্যাপ করে নিভিয়ে ফেলো ✨
+        </p>
+      </div>
+
+      <!-- Microphone Status Pill -->
+      <div class="flex items-center gap-3 mb-6">
+        <button id="micBlowBtn" class="glass-card px-4 py-2 rounded-full border border-pink-200 text-pink-700 hover:text-pink-800 text-xs font-sans font-bold flex items-center gap-2 transition-all shadow-sm">
+          <i id="micIcon" class="fa-solid fa-microphone"></i>
+          <span id="micStatusText">Enable Mic to Blow Flames</span>
+        </button>
+        <span class="text-xs text-slate-600 font-medium">or simply tap the candles!</span>
+      </div>
+
+      <!-- Interactive 3D Party Table & Cake Canvas Container -->
+      <div class="relative w-full max-w-lg mx-auto flex flex-col items-center py-4 sm:py-6 select-none px-2" id="cakeStage">
+        
+        <!-- Floating Balloons Background Elements -->
+        <div class="absolute inset-0 pointer-events-none overflow-hidden -z-10" id="cakeBalloonsBg"></div>
+
+        <!-- Smoke Canvas for Extinguished Candles -->
+        <canvas id="smokeCanvas" class="absolute inset-0 pointer-events-none z-30"></canvas>
+
+        <!-- The Candles Container -->
+        <div class="flex items-end justify-center gap-5 sm:gap-6 md:gap-8 z-20 mb-[-12px] relative">
+          <!-- Candle 1 -->
+          <div class="candle group cursor-pointer" data-candle="1" onclick="blowCandle(1)">
+            <div class="flame" id="flame1">
+              <div class="flame-inner"></div>
+            </div>
+            <div class="wick"></div>
+            <div class="candle-body bg-gradient-to-b from-pink-400 via-rose-500 to-purple-600">
+              <div class="candle-stripe"></div>
+            </div>
+          </div>
+
+          <!-- Candle 2 (Center - Taller) -->
+          <div class="candle group cursor-pointer" data-candle="2" onclick="blowCandle(2)">
+            <div class="flame" id="flame2">
+              <div class="flame-inner"></div>
+            </div>
+            <div class="wick"></div>
+            <div class="candle-body h-14 sm:h-16 bg-gradient-to-b from-amber-300 via-yellow-400 to-amber-600">
+              <div class="candle-stripe"></div>
+            </div>
+          </div>
+
+          <!-- Candle 3 -->
+          <div class="candle group cursor-pointer" data-candle="3" onclick="blowCandle(3)">
+            <div class="flame" id="flame3">
+              <div class="flame-inner"></div>
+            </div>
+            <div class="wick"></div>
+            <div class="candle-body bg-gradient-to-b from-cyan-400 via-blue-500 to-indigo-600">
+              <div class="candle-stripe"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Layered 3D Styled Celebration Cake -->
+        <div class="relative cake-assembly z-10 w-full max-w-[280px] sm:max-w-[320px] md:max-w-[340px] mx-auto cursor-pointer" onclick="triggerCakeCutFromAnywhere()" title="Tap anywhere to cut the cake!">
+          <!-- Top Tier -->
+          <div class="cake-tier-top relative mx-auto w-40 sm:w-48 md:w-56 h-14 sm:h-16 rounded-t-2xl bg-gradient-to-r from-pink-100 via-rose-100 to-amber-100 shadow-md border-b-4 border-rose-200 flex items-center justify-center overflow-hidden">
+            <div class="frosting-drip-pattern"></div>
+            <span class="text-[11px] sm:text-xs md:text-sm font-sans font-extrabold tracking-wider text-rose-700 z-10 drop-shadow-sm flex items-center gap-1.5 animate-pulse whitespace-nowrap">
+              ✨ HAPPY BIRTHDAY HEYA ✨
+            </span>
+          </div>
+
+          <!-- Middle Tier -->
+          <div class="cake-tier-mid relative mx-auto w-52 sm:w-64 h-16 sm:h-20 rounded-t-2xl bg-gradient-to-r from-purple-500 via-fuchsia-500 to-purple-500 shadow-md border-t-2 border-purple-200/50 flex items-center justify-center overflow-hidden">
+            <div class="frosting-pearls"></div>
+            <div class="cake-stars flex gap-2 sm:gap-3 text-amber-200 text-xs">
+              <i class="fa-solid fa-sparkles animate-pulse"></i>
+              <span class="font-sans font-bold tracking-wider text-xs sm:text-sm text-white drop-shadow whitespace-nowrap">BEST FRIEND FOREVER 💕</span>
+              <i class="fa-solid fa-sparkles animate-pulse"></i>
+            </div>
+          </div>
+
+          <!-- Bottom Tier / Slice Cut Area -->
+          <div id="cakeBottomTier" class="relative mx-auto w-64 sm:w-72 md:w-80 h-20 sm:h-24 rounded-t-3xl bg-gradient-to-r from-rose-600 via-pink-600 to-purple-700 border-t-4 border-amber-300 shadow-xl overflow-hidden flex items-center justify-center cursor-pointer hover:border-amber-200 transition-colors">
+            <!-- Cream Swirls -->
+            <div class="absolute inset-x-0 top-0 h-4 flex justify-between px-2 sm:px-3">
+              <span class="cream-swirl"></span>
+              <span class="cream-swirl"></span>
+              <span class="cream-swirl"></span>
+              <span class="cream-swirl"></span>
+              <span class="cream-swirl"></span>
+              <span class="cream-swirl"></span>
+              <span class="cream-swirl"></span>
+            </div>
+            
+            <!-- Cut Guide Line (Appears once candles are blown) -->
+            <div id="cutGuideline" onclick="triggerCakeCutFromAnywhere(); event.stopPropagation();" class="absolute inset-y-0 left-1/2 w-1 bg-amber-300 dashed-glow hidden z-20 cursor-pointer" title="Click to cut!">
+              <span class="absolute top-1/2 -left-8 -translate-y-1/2 text-[9px] sm:text-[10px] font-sans bg-amber-400 text-amber-950 font-extrabold px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full shadow-lg animate-pulse cursor-pointer whitespace-nowrap">
+                TAP TO CUT 🍰
+              </span>
+            </div>
+
+            <div class="text-center px-2">
+              <span class="text-[10px] sm:text-xs uppercase tracking-widest font-sans font-semibold text-amber-200">Make This Year Count</span>
+              <div class="text-sm sm:text-base md:text-xl font-extrabold text-white drop-shadow font-sans">
+                ✨ Cheers to Another Wonderful Year ✨
+              </div>
+            </div>
+          </div>
+
+          <!-- Cut Cake Slice Piece (Splits when cut) -->
+          <div id="cakeCutSlice" class="absolute right-4 sm:right-6 bottom-0 w-20 sm:w-24 h-20 sm:h-24 pointer-events-none opacity-0 transition-transform duration-700 ease-out z-20">
+            <div class="w-full h-full bg-gradient-to-br from-rose-200 via-pink-500 to-purple-600 rounded-lg border-2 border-amber-300 shadow-xl flex items-center justify-center text-xs font-bold text-white font-sans">
+              🍰 Slice!
+            </div>
+          </div>
+
+          <!-- Elegant Party Platter -->
+          <div class="w-72 sm:w-80 md:w-96 -mt-2 mx-auto h-4 sm:h-5 bg-gradient-to-r from-amber-200 via-yellow-100 to-amber-200 rounded-full shadow-lg border-t border-white"></div>
+          <div class="w-64 sm:w-72 md:w-84 mx-auto h-2 bg-pink-900/15 rounded-full blur-sm"></div>
+        </div>
+
+        <!-- Draggable Cake Knife Area & Direct Tap Cut Button -->
+        <div id="knifeContainer" class="mt-5 sm:mt-6 relative w-full flex flex-col items-center justify-center hidden px-2">
+          <p class="text-xs text-slate-700 font-sans font-bold mb-2 animate-bounce flex items-center gap-1.5 text-center">
+            <i class="fa-solid fa-hand-pointer text-pink-600"></i> কেকের ওপর বা নিচের বাটনে ট্যাপ করে কেক কেটে ফেলো!
+          </p>
+          <div id="draggableKnife" onclick="triggerCakeCutFromAnywhere()" class="cursor-pointer active:scale-95 w-36 sm:w-40 h-11 sm:h-12 flex items-center justify-center filter drop-shadow-md z-30 transition-transform select-none" title="Click or drag to cut!">
+            <div class="knife-handle w-10 sm:w-12 h-5 sm:h-6 bg-gradient-to-r from-amber-700 to-yellow-900 rounded-l-md border border-amber-400 flex items-center justify-center text-[9px] text-amber-300 font-bold">✨</div>
+            <div class="knife-blade w-24 sm:w-28 h-6 sm:h-7 bg-gradient-to-r from-slate-100 via-white to-amber-100 rounded-r-full shadow-md border-t border-b border-amber-300 relative flex items-center justify-end pr-2 sm:pr-3">
+              <span class="text-[9px] text-amber-700 font-sans tracking-tighter font-bold">CLICK TO CUT 🔪</span>
+            </div>
+          </div>
+
+          <!-- Prominent Cut Button for direct instant action -->
+          <button onclick="triggerCakeCutFromAnywhere()" class="mt-3 py-2.5 px-6 bg-gradient-to-r from-amber-400 to-yellow-400 hover:from-amber-300 hover:to-yellow-300 text-amber-950 font-bold rounded-full shadow-md text-xs sm:text-sm flex items-center gap-2 transition-transform hover:scale-105 active:scale-95 cursor-pointer font-sans">
+            <i class="fa-solid fa-cake-candles"></i> <span>Cut Birthday Cake Now! 🍰</span>
+          </button>
+        </div>
+
+        <!-- Next Unlock Button & Heartfelt Wish Card (Appears after cake cutting) -->
+        <div id="cakeSuccessCard" class="mt-6 sm:mt-8 hidden flex flex-col items-center space-y-4 w-full px-2">
+          <div class="glass-card p-5 sm:p-6 md:p-8 rounded-3xl border-2 border-pink-200 shadow-xl max-w-lg w-full text-center relative overflow-hidden bg-white/95">
+            <div class="absolute -top-10 -left-10 w-28 h-28 bg-pink-300/30 rounded-full blur-xl pointer-events-none"></div>
+            <div class="absolute -bottom-10 -right-10 w-28 h-28 bg-amber-200/40 rounded-full blur-xl pointer-events-none"></div>
+
+            <div class="text-3xl md:text-4xl mb-2 animate-bounce">🎉 🎂 ✨ 💖</div>
+            <h3 class="text-2xl md:text-3xl font-extrabold text-pink-600 font-display tracking-tight">
+              Happy Birthday, Dear Heya! 🌟
+            </h3>
+            <p id="cakeWishText" class="text-xl sm:text-2xl md:text-3xl text-pink-700 mt-3 leading-snug font-handwriting font-bold drop-shadow-sm">
+              "May your life be filled with infinite joy, sparkling laughter, endless love, and all the dreams coming true! You deserve every piece of happiness today and always! 💖✨🎂"
+            </p>
+            <div class="mt-4 pt-3 border-t border-pink-100 text-xs text-pink-700 font-bengali font-bold tracking-wider">
+              🎁 নিচের বাটনে ক্লিক করে আনলক করো আমাদের স্পেশাল মেমোরি অ্যালবাম! 📸
+            </div>
+          </div>
+
+          <button onclick="goToStep(3)" class="py-3 sm:py-3.5 px-6 sm:px-8 bg-gradient-to-r from-pink-500 via-rose-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-extrabold rounded-full shadow-lg shadow-pink-300/50 transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center gap-2.5 sm:gap-3 text-sm sm:text-base font-bengali">
+            <span>স্মৃতিময় অ্যালবাম আনলক করো</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- STEP 3: 3D MEMORY LANE / FLOATING POLAROID WALL -->
+    <!-- ================================================================ -->
+    <section id="step3" class="step-section hidden flex flex-col items-center justify-center text-center w-full max-w-6xl mx-auto py-8">
+      <div class="mb-8 space-y-2">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-100 border border-pink-200 text-pink-700 text-xs font-sans font-bold tracking-wide uppercase shadow-sm">
+          📸 পার্ট ৩: স্মৃতিময় মুহূর্তগুলো ✨
+        </div>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 font-display">
+          আমাদের দারুণ সব <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-rose-600 to-amber-500 italic">স্মৃতির পাতা</span> 💖
+        </h2>
+        <p class="text-slate-700 text-base max-w-lg mx-auto font-bengali font-medium">
+          প্রতিটি ছবির পেছনে লুকিয়ে আছে স্পেশাল স্মৃতি আর অকৃত্রিম ভালোবাসা! যেকোনো ছবিতে ট্যাপ করে ছড়িয়ে দাও জাদুকরী চমক ✨💖
+        </p>
+      </div>
+
+      <!-- Polaroid Cards Grid (8 categorized moments) -->
+      <div id="polaroidGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 w-full px-2 perspective-container justify-center items-start">
+        <!-- Dynamically injected via JS from CONFIG.MEMORIES -->
+      </div>
+
+      <!-- Section Footer / Proceed Button -->
+      <div class="mt-12 flex flex-col items-center">
+        <button onclick="goToStep(4)" class="py-3.5 px-8 bg-gradient-to-r from-pink-500 via-rose-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-extrabold rounded-full shadow-lg shadow-pink-300/50 hover:scale-105 transition-all duration-300 flex items-center gap-3 font-bengali text-base">
+          <span>সিক্রেট উইশ কার্ডগুলো স্ক্র্যাচ করো ✨</span>
+          <i class="fa-solid fa-sparkles"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- STEP 4: INTERACTIVE 'SCRATCH & WIN' WISHES WALL -->
+    <!-- ================================================================ -->
+    <section id="step4" class="step-section hidden flex flex-col items-center justify-center text-center w-full max-w-5xl mx-auto py-8">
+      <div class="mb-8 space-y-2">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-100 border border-purple-200 text-purple-700 text-xs font-sans font-bold tracking-wide uppercase shadow-sm">
+          ✨ পার্ট ৪: সিক্রেট উইশ ও সারপ্রাইজ 💌
+        </div>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 font-display">
+          কার্ড স্ক্র্যাচ করে দেখো <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-rose-500 italic">স্পেশাল বার্তা</span> 💌
+        </h2>
+        <p class="text-slate-700 text-base max-w-lg mx-auto font-bengali font-medium">
+          প্রতিটি কার্ডে মাউস বা আঙুল দিয়ে সোনালী ফয়েল স্ক্র্যাচ করো আর পড়ে নাও মনের গভীর থেকে পাঠানো মজার ও মিষ্টি উইশগুলো!
+        </p>
+      </div>
+
+      <!-- Scratch Cards Grid -->
+      <div id="scratchCardGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full px-2">
+        <!-- Cards injected dynamically via JS from CONFIG.WISHES -->
+      </div>
+
+      <!-- Next Step Button -->
+      <div class="mt-12 flex flex-col items-center">
+        <div id="scratchHint" class="text-xs font-bengali text-slate-600 mb-3 flex items-center gap-1.5 font-bold">
+          <i class="fa-solid fa-circle-info text-pink-500"></i> কার্ডের ওপর অন্তত ৫০% স্ক্র্যাচ করলে পুরো বার্তাটি দৃশ্যমান হবে
+        </div>
+        <button onclick="goToStep(5)" class="py-3.5 px-8 bg-gradient-to-r from-purple-500 via-pink-500 to-rose-500 hover:from-purple-600 hover:to-rose-600 text-white font-extrabold rounded-full shadow-lg shadow-pink-300/50 hover:scale-105 transition-all duration-300 flex items-center gap-3 font-bengali text-base">
+          <span>বেলুন ফাটিয়ে গিফট ভাউচার নাও 🎈</span>
+          <i class="fa-solid fa-gift"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- STEP 5: BALLOON POP MINI-GAME & VIRTUAL GIFT VOUCHER -->
+    <!-- ================================================================ -->
+    <section id="step5" class="step-section hidden flex flex-col items-center justify-center text-center w-full max-w-4xl mx-auto py-8 relative">
+      <div class="mb-4 space-y-2">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100 border border-emerald-200 text-emerald-800 text-xs font-sans font-bold tracking-wide uppercase shadow-sm">
+          🎈 পার্ট ৫: দ্য গ্র্যান্ড ভাউচার 🎁
+        </div>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 font-display">
+          বেলুন ফাটিয়ে নিয়ে নাও <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-rose-500 to-purple-600 italic">বার্থডে গিফট</span> 🎁
+        </h2>
+        <p class="text-slate-700 text-base max-w-md mx-auto font-medium">
+          যেকোনো ৫টি রঙিন বেলুনে ট্যাপ করে ফাটাও এবং আনলক করো আজীবন মেয়াদের আল্টিমেট বার্থডে পাস!
+        </p>
+      </div>
+
+      <!-- Mini-Game Stats Bar -->
+      <div class="glass-card px-6 py-2.5 rounded-full border border-pink-200 shadow-md mb-6 flex items-center gap-6 text-sm font-sans font-bold">
+        <div class="flex items-center gap-2 text-rose-600 font-bold">
+          <span>🎈 ফাটানো বেলুন:</span>
+          <span id="balloonPopCount" class="font-extrabold text-lg text-slate-900">0</span> / 5
+        </div>
+        <div class="h-4 w-px bg-pink-200"></div>
+        <div class="flex items-center gap-2 text-amber-700 font-bold">
+          <span>💖 লাভ স্কোর:</span>
+          <span id="loveScore" class="font-extrabold text-lg text-amber-600">100%</span>
+        </div>
+      </div>
+
+      <!-- Balloon Game Interactive Field -->
+      <div id="balloonArena" class="relative w-full h-80 md:h-96 rounded-3xl glass-card border border-pink-200/60 shadow-lg overflow-hidden cursor-crosshair mb-8 select-none bg-gradient-to-b from-sky-100/40 via-pink-50/40 to-amber-50/40">
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <span class="text-pink-900/10 text-4xl md:text-6xl font-display font-black tracking-widest">TAP BALLOONS</span>
+        </div>
+        <!-- Balloons will float dynamically here -->
+      </div>
+
+      <!-- Claim Gift Voucher Call to Action Button -->
+      <div class="flex flex-col items-center space-y-4">
+        <button id="claimVoucherBtn" onclick="openVoucherModal()" class="py-4 px-10 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 hover:from-amber-300 hover:to-yellow-300 text-amber-950 font-extrabold rounded-2xl shadow-lg shadow-amber-300/50 hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-3 text-base md:text-lg cursor-pointer font-bengali">
+          <i class="fa-solid fa-ticket-simple text-xl"></i>
+          <span>বার্থডে গিফট ভাউচার আনলক করো 🎟️</span>
+        </button>
+        <p class="text-xs text-slate-600 font-bengali font-semibold">১০০% গ্যারান্টিযুক্ত, কোনো মেয়াদোত্তীর্ণ হওয়ার ভয় নেই! ✨</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================================================================ -->
+  <!-- LIGHTBOX MODAL (PHOTO + CELEBRATION CAPSULE) -->
+  <!-- ================================================================ -->
+  <div id="memoryLightbox" class="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+    <div class="relative glass-card max-w-2xl w-full my-auto rounded-3xl border border-white/90 shadow-2xl p-4 sm:p-6 md:p-8 animate-modal-in bg-white/95 max-h-[92vh] overflow-y-auto">
+      <!-- Close Button -->
+      <button onclick="closeMemoryLightbox()" class="sticky top-0 float-right -mt-1 -mr-1 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-slate-100/90 hover:bg-slate-200 text-slate-700 flex items-center justify-center transition-colors focus:outline-none z-30 shadow-md cursor-pointer mb-2">
+        <i class="fa-solid fa-xmark text-base sm:text-lg"></i>
+      </button>
+
+      <!-- Modal Content Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 items-center clear-both pt-1">
+        <!-- Photo with Polaroid Framing -->
+        <div class="relative rounded-2xl overflow-hidden shadow-md border-4 border-white bg-white">
+          <img id="lightboxImg" src="" alt="Memory" class="w-full max-h-72 sm:max-h-80 md:max-h-96 object-contain bg-slate-950/80 rounded-lg" />
+          <div class="p-2.5 sm:p-3 text-center bg-white">
+            <span id="lightboxTag" class="text-xs font-sans uppercase text-rose-600 font-extrabold tracking-wider">Moment</span>
+          </div>
+        </div>
+
+        <!-- Magical Birthday Capsule & Story -->
+        <div class="flex flex-col justify-between space-y-3 sm:space-y-4 text-left font-bengali">
+          <div>
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-pink-100 border border-pink-200 text-pink-700 text-xs font-sans mb-2 shadow-sm font-bold">
+              <span>👑</span> <span>বার্থডে গার্ল স্পেশাল ক্যাপসুল</span> <span>✨</span>
+            </div>
+            <h3 id="lightboxTitle" class="text-lg sm:text-xl md:text-2xl font-bold text-slate-900 mb-1.5 sm:mb-2 font-bengali">Memory Title</h3>
+            <div class="bg-rose-50/80 p-3.5 sm:p-4 rounded-2xl border border-rose-100 shadow-inner">
+              <p id="lightboxDesc" class="text-slate-700 text-xs sm:text-sm md:text-base leading-relaxed font-bengali font-medium">
+                Handwritten memory note goes here...
+              </p>
+            </div>
+          </div>
+
+          <!-- Interactive Magical Love & Sparkle Reaction Box -->
+          <div class="glass-card p-3.5 sm:p-4 rounded-2xl border border-pink-200 bg-gradient-to-br from-pink-50 to-purple-50 space-y-2.5 sm:space-y-3 shadow-sm">
+            <div class="flex items-center justify-between text-xs text-pink-800 font-sans font-bold">
+              <span class="flex items-center gap-1.5"><i class="fa-solid fa-sparkles text-amber-500 animate-spin"></i> Heya's Happiness Aura:</span>
+              <span id="loveCountDisplay" class="font-extrabold text-pink-600 text-xs sm:text-sm font-bengali">অফুরন্ত ভালোবাসা 💕</span>
+            </div>
+
+            <!-- The Magic Shower Button -->
+            <button id="loveBurstBtn" onclick="triggerMagicHeartShower(event)" class="w-full py-3 sm:py-3.5 px-4 bg-gradient-to-r from-pink-500 via-rose-500 to-amber-400 hover:from-pink-600 hover:to-amber-500 text-white font-extrabold rounded-xl shadow-lg shadow-pink-300/50 text-xs sm:text-sm flex items-center justify-center gap-2 transition-all transform hover:scale-105 active:scale-95 cursor-pointer select-none">
+              <span class="text-base">💖</span>
+              <span class="font-bengali">ভালোবাসা আর শুভেচ্ছা ছড়িয়ে দাও! ✨</span>
+            </button>
+            <div class="text-[11px] sm:text-xs text-pink-700 text-center font-bengali font-semibold">
+              🌸 বাটনটি যতবার ট্যাপ করবে ততবার চারদিকে ভালোবাসার বৃষ্টি নামবে!
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- VIRTUAL BIRTHDAY GIFT VOUCHER MODAL -->
+  <!-- ================================================================ -->
+  <div id="voucherModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-md hidden flex items-center justify-center p-2.5 sm:p-4 overflow-y-auto">
+    <div class="relative max-w-xl w-full my-auto py-3 sm:py-6 animate-modal-in max-h-[96vh] overflow-y-auto">
+      <!-- Close Button -->
+      <button onclick="closeVoucherModal()" class="sticky top-1 float-right -mr-1 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/90 hover:bg-white text-slate-800 flex items-center justify-center transition-colors focus:outline-none z-30 shadow-lg cursor-pointer mb-2">
+        <i class="fa-solid fa-xmark text-base sm:text-lg"></i>
+      </button>
+
+      <!-- The Golden Ticket Canvas / Container for Download -->
+      <div id="ticketContainer" class="golden-ticket-card rounded-3xl p-4 sm:p-6 md:p-8 border-2 border-amber-300/80 shadow-2xl relative overflow-hidden text-midnight clear-both">
+        <!-- Holographic Sheen Layer -->
+        <div class="holographic-sheen"></div>
+
+        <!-- Perforated Edge Circles -->
+        <div class="ticket-notch notch-left"></div>
+        <div class="ticket-notch notch-right"></div>
+
+        <!-- Ticket Header -->
+        <div class="flex items-center justify-between border-b-2 border-amber-900/20 pb-3 sm:pb-4 mb-3 sm:mb-4">
+          <div class="flex items-center gap-2 sm:gap-2.5">
+            <span class="text-2xl sm:text-3xl">🎟️</span>
+            <div>
+              <span class="text-[10px] sm:text-[11px] font-bengali tracking-widest uppercase font-bold text-amber-900/80">অফিসিয়াল লাইফটাইম পাস</span>
+              <h4 class="text-lg sm:text-xl md:text-2xl font-bengali font-extrabold text-amber-950 leading-tight">দ্য আল্টিমেট বার্থডে ভাউচার</h4>
+            </div>
+          </div>
+          <div class="text-right font-bengali shrink-0">
+            <div class="text-[10px] sm:text-[11px] font-bold text-amber-900">নং: ৮৮৮-BDAY</div>
+            <div class="text-[10px] sm:text-xs font-bold text-emerald-900 bg-emerald-100/90 px-2 sm:px-2.5 py-0.5 rounded-full border border-emerald-500/50">মেয়াদ: আজীবন</div>
+          </div>
+        </div>
+
+        <!-- Recipient & Perks -->
+        <div class="space-y-3 sm:space-y-4 my-3 sm:my-4 font-bengali">
+          <div class="bg-white/50 backdrop-blur-sm p-3 sm:p-3.5 rounded-2xl border border-amber-900/20 shadow-sm text-left">
+            <div class="text-[11px] sm:text-xs uppercase text-amber-900/80 font-bold">প্রাপক:</div>
+            <div id="voucherRecipient" class="text-xl sm:text-2xl md:text-3xl font-bold text-amber-950 mt-0.5">হেয়া (আমাদের ড্রামা কুইন)</div>
+          </div>
+
+          <!-- Coupon Privileges List -->
+          <div class="space-y-2 text-left">
+            <div class="text-xs sm:text-sm uppercase text-amber-950 font-bold flex items-center gap-1.5">
+              <i class="fa-solid fa-gift text-amber-700"></i> যেসব স্পেশাল সুবিধা পাবে:
+            </div>
+            
+            <div id="voucherPerksList" class="grid grid-cols-1 gap-2 sm:gap-2.5 text-xs sm:text-sm text-amber-950">
+              <!-- Injected dynamically from CONFIG.COUPONS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Ticket Bottom Bar / QR Code & Signature -->
+        <div class="border-t-2 border-dashed border-amber-900/30 pt-3 sm:pt-4 mt-3 sm:mt-4 flex flex-col sm:flex-row items-center justify-between gap-3 font-bengali">
+          <div class="flex items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
+            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-amber-950 rounded-xl flex items-center justify-center text-amber-200 text-lg sm:text-xl font-mono shrink-0 shadow-md">
+              <i class="fa-solid fa-qrcode"></i>
+            </div>
+            <div class="text-xs text-amber-950 font-medium leading-relaxed text-left">
+              <div class="font-bold text-xs sm:text-sm text-amber-950">স্বাক্ষরে: হ্যান্ডসাম বয় তানজিম</div>
+              <div class="text-amber-900/80 text-[11px] sm:text-xs">ভালোবাসা সহ আজীবন ও চিরকাল ❤️</div>
+            </div>
+          </div>
+          <div class="text-center sm:text-right w-full sm:w-auto">
+            <span class="font-handwriting text-2xl sm:text-3xl text-amber-900 font-bold">Always & Forever ❤️</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons below ticket -->
+      <div class="mt-4 sm:mt-6 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-1">
+        <button id="downloadTicketBtn" onclick="downloadVoucherAsImage()" class="w-full sm:w-auto py-3 px-5 sm:px-6 bg-gradient-to-r from-amber-400 to-yellow-400 hover:from-amber-300 hover:to-yellow-300 text-amber-950 font-extrabold rounded-xl shadow-lg shadow-amber-300/40 flex items-center justify-center gap-2 text-xs sm:text-sm transition-all transform hover:scale-105 cursor-pointer">
+          <i class="fa-solid fa-download"></i> Save Ticket to Phone / PC
+        </button>
+        <button onclick="triggerGrandFinaleConfetti()" class="w-full sm:w-auto py-3 px-5 sm:px-6 bg-white/90 hover:bg-white text-purple-900 font-bold rounded-xl border-2 border-purple-200 shadow-md flex items-center justify-center gap-2 text-xs sm:text-sm transition-all transform hover:scale-105 cursor-pointer">
+          <i class="fa-solid fa-sparkles text-amber-500"></i> Fire Celebration Cannon!
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Audio Element (Optional custom MP3 placeholder, falls back to Web Audio Synth) -->
+  <audio id="bgMusicAudio" loop preload="auto"></audio>
+
+  <!-- Application Logic -->
+  <script src="app.js?v=heya_v22"></script>
+</body>
+</html>
