@@ -1,104 +1,43 @@
-# 🎂 Cyber-Magical Birthday Surprise Experience
+﻿# ðŸŽ‚ Cyber-Magical Birthday Surprise Web Experience
 
-A single-page, gamified, and emotional birthday surprise web application designed for your best friend. Built with **HTML5**, **Tailwind CSS**, **GSAP**, **Canvas Confetti**, and the **Web Audio API**.
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://html.spec.whatwg.org/)
+[![GSAP](https://img.shields.io/badge/GSAP-Animation-88CE02?style=for-the-badge&logo=greensock&logoColor=white)](https://greensock.com/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Web Audio API](https://img.shields.io/badge/Web_Audio_API-Sound-blue?style=for-the-badge)](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
----
-
-## 🚀 Quick Start & How to Open
-
-### Option 1: View in Browser via Local Server (Recommended)
-The server is currently running locally at:
-👉 **[http://localhost:3000](http://localhost:3000)**
-
-### Option 2: Direct File Open
-You can simply double-click `index.html` in Windows Explorer to open it in Chrome, Edge, Brave, or Safari without any server setup!
+> An unforgettable, gamified, and emotional single-page birthday surprise web experience. Engineered with modern HTML5, Tailwind CSS, GSAP timelines, Canvas Confetti, and the Web Audio API.
 
 ---
 
-## 🎮 Gamified 5-Stage Journey
+## ðŸŒŸ Key Features
 
-1. **Step 1: The Mysterious Intro Gate**
-   - Anamorphic cinema bars with a glowing 3D golden gift box and floating lock.
-   - Enter secret passcode (`BDAY` by default) or click **"I Am Ready!"**.
-   - Dramatic cinematic reveal with celestial chimes and full-screen confetti cannons.
-
-2. **Step 2: Cake Cutting & Candle Blowing**
-   - 3D-styled celebration cake with a neon banner: *"Happy Birthday, [Friend's Name]!"*.
-   - **Blowing Candles**: Blow into your microphone (Web Audio frequency analyzer) or click the candles to blow them out with realistic canvas smoke physics.
-   - **Cake Cutting**: Drag the glowing golden knife across the cake line to cut a slice, triggering party horn fanfares, crowd cheers, and floating balloons.
-
-3. **Step 3: 3D Memory Lane / Polaroid Wall**
-   - 8 categorized polaroid photo cards with authentic tape stickers, drop shadows, and handwritten captions.
-   - Dynamic 3D parallax tilt effect following your mouse cursor.
-   - Click any card to open a high-res lightbox with an interactive **Voice Note Audio Player** (animated waveforms).
-
-4. **Step 4: Interactive 'Scratch & Win' Wishes Wall**
-   - Real HTML5 Canvas scratch-off cards (metallic gold/silver foil).
-   - Drag mouse or finger to scratch off foil and reveal:
-     - 😈 A funny roast/inside joke
-     - 💖 A heartfelt emotional wish
-     - 🌟 A bucket list promise
-     - 🔮 A secret birthday prophecy
-   - Auto-reveals with sparkles and confetti once scratched past 45%.
-
-5. **Step 5: Balloon Pop Mini-Game & Golden Ticket Voucher**
-   - Interactive balloons drifting upwards that pop when clicked, showering emojis (`💖`, `🎉`, `🍰`, `⭐`).
-   - Pop 5 balloons to unlock the **Golden Ticket Modal**.
-   - Features a holographic VIP Birthday Voucher with customizable privileges and a **"Save Ticket to Phone / PC"** button that exports a high-resolution PNG image!
+- **ðŸŽ Interactive Gamified Gift Box**: Multi-stage mystery box unlocking sequence with realistic physics and anticipation sound effects.
+- **ðŸŽ¼ Web Audio Melodic Engine**: Synthesizes and plays custom celebratory sound effects and birthday melodies directly in the browser without external players.
+- **ðŸŽŠ Dynamic Confetti Cannons**: Multi-directional particle explosions synchronized with surprise milestones.
+- **ðŸ“¸ Memory Carousel & Wishes**: Personalized memory gallery with smooth GSAP card transitions.
 
 ---
 
-## 🛠️ How to Customize
+## ðŸš€ Getting Started
 
-Open `app.js` and edit the `SURPRISE_CONFIG` object at the very top of the file:
+Simply clone and open index.html in any web browser, or serve with a local server:
+`ash
+git clone https://github.com/tanzim557/birthday-surprise-web.git
+cd birthday-surprise-web
 
-```javascript
-const SURPRISE_CONFIG = {
-  // 1. Friend's Name
-  FRIEND_NAME: "Heya",
-
-  // 2. Birthday Password (Case-insensitive)
-  PASSWORD: "BDAY",
-
-  // 3. Custom MP3 (Optional; built-in synthesizer plays if left empty)
-  AUDIO_URL: "",
-
-  // 4. Memory Polaroid Photos & Voice Notes
-  MEMORIES: [
-    {
-      id: 1,
-      tag: "The Beginning",
-      title: "Our First Hangout",
-      image: "https://your-image-url.jpg",
-      caption: "That coffee meetup that lasted 4 hours!",
-      voiceNote: "Remember when we lost track of time?",
-      date: "October 14, 2021"
-    },
-    // ... 8 moments in total
-  ],
-
-  // 5. Scratch Card Messages
-  WISHES: [
-    { badge: "The Brutal Roast 😈", message: "..." },
-    { badge: "Pure Emotion 💖", message: "..." },
-    // ...
-  ],
-
-  // 6. Redeemable Birthday Coupons
-  COUPONS: [
-    { icon: "fa-utensils", label: "One Lavish Dinner / Food Treat Fully Sponsored by Me 🍔" },
-    // ...
-  ]
-};
-```
+# Using any static server (or VS Code Live Server)
+npx serve .
+`
 
 ---
 
-## 🎶 Sound Synthesizer Engine
-No external audio files or MP3 downloads are needed! The built-in Web Audio API generates:
-- Ambient "Happy Birthday" lo-fi arpeggiator melody
-- Celestial door unlock chimes
-- Candle wind puff sounds
-- Party horn fanfare & crowd applause
-- Balloon pops & scratch sounds
-- Floating glassmorphic music controls (Sound ON/OFF + Equalizer animation)
+## ðŸ‘¤ Author
+
+Developed by **[Mubassher Alam Tanzim](https://github.com/tanzim557)**  
+GitHub: [@tanzim557](https://github.com/tanzim557) â€¢ Email: mubassheralam0@gmail.com
+
+---
+
+## ðŸ“„ License
+This project is licensed under the MIT License.
